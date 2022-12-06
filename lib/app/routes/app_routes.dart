@@ -1,0 +1,20 @@
+part of 'app_pages.dart';
+// DO NOT EDIT. This is code generated via package:get_cli/get_cli.dart
+
+abstract class Routes {
+  Routes._();
+  static const TABS = _Paths.TABS;
+  static const SERACH = _Paths.SEARCH;
+  static const RESULT = _Paths.RESULT;
+  static const PLAY_LIST = _Paths.PLAY_LIST;
+  static const MV = _Paths.MV;
+}
+
+abstract class _Paths {
+  _Paths._();
+  static const TABS = '/tabs';
+  static const SEARCH = '/search';
+  static const RESULT = '/result';
+  static const PLAY_LIST = '/play-list';
+  static const MV = '/mv';
+}
