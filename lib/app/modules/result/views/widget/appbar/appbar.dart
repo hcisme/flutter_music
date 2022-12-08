@@ -21,14 +21,16 @@ class ResultAppbarView extends GetView<ResultController> {
         ),
       ),
       title: Container(
+        alignment: Alignment.center,
         width: double.infinity,
-        height: ScreenAdapter.height(96),
+        height: ScreenAdapter.height(100),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             color: const Color.fromRGBO(246, 246, 246, 1)),
         child: TextFormField(
           initialValue: '${Get.arguments['key']}',
           style: TextStyle(fontSize: ScreenAdapter.fs(40)),
+          textAlignVertical: TextAlignVertical.center,
           decoration: InputDecoration(
                   contentPadding: const EdgeInsets.all(0),
                   prefixIcon: const Icon(
@@ -56,7 +58,6 @@ class ResultAppbarView extends GetView<ResultController> {
           },
         ),
       ),
-      centerTitle: true,
     );
   }
 }
