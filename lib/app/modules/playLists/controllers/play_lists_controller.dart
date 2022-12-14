@@ -51,6 +51,7 @@ class PlayListsController extends GetxController
   }
 
   resetPagination() {
+    easyRefreshController.resetFooter();
     page = 0;
     offset = 0;
     flag = true;
@@ -89,11 +90,11 @@ class PlayListsController extends GetxController
 
     request();
 
-    ever(cat, (callback) {
+    ever(cat, (callback) async {
       resetPagination();
-      scrollController.animateTo(0,
+      await scrollController.animateTo(0,
           curve: Curves.ease, duration: const Duration(milliseconds: 300));
-      request();
+      await request();
     });
   }
 

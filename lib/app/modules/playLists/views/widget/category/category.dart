@@ -49,11 +49,12 @@ class PlaylistCategory extends GetView<PlayListsController> {
                       ),
                       ...controller.tabs
                           .map((item) => InkWell(
-                                onTap: () {
+                                onTap: () async {
                                   controller.cat.value = item;
                                   controller.tabController.animateTo(
                                       controller.tabs.indexWhere(
                                           (element) => element == item));
+                                  Get.back();
                                 },
                                 child: Chip(
                                   backgroundColor: item == controller.cat.value
