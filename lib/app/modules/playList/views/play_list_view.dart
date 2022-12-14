@@ -23,14 +23,6 @@ class PlayListView extends GetView<PlayListController> {
         ),
         body: EasyRefresh.builder(
           controller: controller.refreshController,
-          footer: const ClassicFooter(
-            readyText: '加载中...',
-            processingText: '加载中...',
-            processedText: '加载成功',
-            noMoreText: '没有更多了哟',
-            failedText: '加载失败',
-            messageText: '最后加载于 %T',
-          ),
           onLoad: () async {
             controller.getPageMusicList().then((success) {
               try {

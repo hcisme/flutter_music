@@ -12,7 +12,7 @@ dependencies:
   flutter_swiper_view: ^1.1.8
   dio: ^4.0.6
   cached_network_image: ^3.2.2
-  easy_refresh: ^3.0.4+4
+  easy_refresh: ^3.0.5+1
   audioplayers: ^1.1.1
   flutter_easyloading: ^3.0.5
   shared_preferences: ^2.0.15

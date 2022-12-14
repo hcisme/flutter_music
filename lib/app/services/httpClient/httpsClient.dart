@@ -9,11 +9,16 @@ class HttpsClient {
     dio.options.baseUrl = domain;
   }
 
-  Future get(apiUrl, {Map<String, dynamic>? params}) async {
+  Future get(apiUrl,
+      {Map<String, dynamic>? params, bool? cache = false}) async {
     try {
-      var response = await dio.get(
-          '$apiUrl?_t=${DateTime.now().millisecondsSinceEpoch}',
-          queryParameters: params);
+      if (!cache!) {
+        var response = await dio.get(
+            '$apiUrl?_t=${DateTime.now().millisecondsSinceEpoch}',
+            queryParameters: params);
+        return response;
+      }
+      var response = await dio.get('$apiUrl', queryParameters: params);
       return response;
     } catch (err) {
       print("请求超时");

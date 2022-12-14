@@ -13,7 +13,7 @@ class TabsController extends GetxController {
   PageController pageController = PageController(initialPage: 0);
   final List<Widget> pages = const [
     KeepAliveWrapper(child: DiscoveryView()),
-    PlayListsView(),
+    KeepAliveWrapper(child: PlayListsView()),
     MvsView(),
   ];
   RxBool flag = false.obs;
@@ -26,7 +26,6 @@ class TabsController extends GetxController {
   getUrl(num id) async {
     var urlMapInfo = await httpsClient.get('/song/url', params: {"id": id});
     url.value = urlMapInfo.data["data"][0]["url"];
-    print(urlMapInfo.data["data"][0]["url"]);
     await Audio().play(url.value);
   }
 

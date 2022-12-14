@@ -25,16 +25,6 @@ class DiscoveryView extends GetView<DiscoveryController> {
       ),
       body: EasyRefresh.builder(
         controller: controller.refreshController,
-        header: const ClassicHeader(
-          dragText: '下拉刷新',
-          armedText: '释放开始',
-          readyText: '刷新中...',
-          processingText: '刷新中...',
-          processedText: '刷新成功',
-          noMoreText: '没有更多',
-          failedText: '刷新失败',
-          messageText: '最后更新于 %T',
-        ),
         onRefresh: () async {
           controller.request().then((success) {
             if (success) {

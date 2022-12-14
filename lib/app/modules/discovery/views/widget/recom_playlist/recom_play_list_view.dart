@@ -1,11 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloudmusic/app/common/Card/custome_card.dart';
 import 'package:cloudmusic/app/modules/discovery/controllers/discovery_controller.dart';
 import 'package:cloudmusic/app/services/format_timestamp/time_tool.dart';
-import 'package:cloudmusic/app/services/httpClient/httpsClient.dart';
 import 'package:cloudmusic/app/services/screenAdapter/screenAdapter.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 class RecomPlayListView extends GetView<DiscoveryController> {

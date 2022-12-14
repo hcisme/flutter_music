@@ -17,7 +17,7 @@ class CustomeCard extends StatelessWidget {
   const CustomeCard(
       {super.key,
       this.width = 280,
-      this.height = 280,
+      this.height = 380,
       required this.coverImg,
       required this.playCount,
       required this.title,
