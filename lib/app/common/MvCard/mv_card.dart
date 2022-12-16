@@ -27,9 +27,11 @@ class CustomeMvCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap ?? () {},
-      child: SizedBox(
+      borderRadius: BorderRadius.circular(ScreenAdapter.width(8)),
+      child: Container(
         width: ScreenAdapter.getScreenWidth(),
         height: ScreenAdapter.height(240),
+        padding: EdgeInsets.symmetric(horizontal: ScreenAdapter.width(32)),
         child: Row(
           children: [
             // 图片

@@ -27,22 +27,21 @@ class ResultAppbarView extends GetView<ResultController> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             color: const Color.fromRGBO(246, 246, 246, 1)),
-        child: TextFormField(
-          initialValue: '${Get.arguments['key']}',
+        child: TextField(
+          controller: controller.textEditingController,
           style: TextStyle(fontSize: ScreenAdapter.fs(40)),
           textAlignVertical: TextAlignVertical.center,
           decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.all(0),
-                  prefixIcon: const Icon(
-                    Icons.search,
-                    color: Colors.black54,
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      // 无边框
-                      borderSide: BorderSide.none))
-              .copyWith(isDense: true),
-          onFieldSubmitted: (newValue) async {
+              contentPadding: const EdgeInsets.all(0),
+              prefixIcon: const Icon(
+                Icons.search,
+                color: Colors.black54,
+              ),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  // 无边框
+                  borderSide: BorderSide.none)),
+          onSubmitted: (newValue) async {
             if (newValue != '') {
               controller.key = newValue;
               await Get.find<SerachController>().setData('s_list', newValue);

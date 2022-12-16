@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class ResultController extends GetxController
     with GetSingleTickerProviderStateMixin {
   late TabController tabController;
+  TextEditingController textEditingController = TextEditingController();
   HttpsClient httpsClient = HttpsClient();
   String key = Get.arguments['key'];
   late final EasyRefreshController refreshController = EasyRefreshController(
@@ -66,6 +67,7 @@ class ResultController extends GetxController
   @override
   void onInit() {
     super.onInit();
+    textEditingController.text = Get.arguments['key'];
 
     EasyLoading.instance
       ..loadingStyle = EasyLoadingStyle.light

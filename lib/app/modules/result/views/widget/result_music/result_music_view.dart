@@ -1,10 +1,11 @@
 import 'package:cloudmusic/app/common/Singles/custome_single_music.dart';
+import 'package:cloudmusic/app/common/music_menu/nusic_nenu.dart';
 import 'package:cloudmusic/app/modules/result/controllers/result_controller.dart';
 import 'package:cloudmusic/app/modules/tabs/controllers/tabs_controller.dart';
+import 'package:cloudmusic/app/services/httpClient/httpsClient.dart';
 import 'package:cloudmusic/app/services/screenAdapter/screenAdapter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-
 import 'package:get/get.dart';
 
 class ResultMusicView extends GetView<ResultController> {
@@ -54,32 +55,35 @@ class ResultMusicView extends GetView<ResultController> {
                                 (item) {
                                   return Column(
                                     children: [
-                                      Container(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal:
-                                                ScreenAdapter.width(16)),
-                                        child: CustomeSingleMusic(
-                                          title: '${item['name']}',
-                                          titleColor: Colors.blueAccent,
-                                          level: item['privilege']['maxbr'] ==
-                                              999000,
-                                          artist:
-                                              '${item['ar'].map((v) => v['name']).join('/')}',
-                                          isVip: item['fee'] == 1,
-                                          subTitle: '${item['al']['name']}',
-                                          originCoverType:
-                                              item['originCoverType'] == 1,
-                                          onTap: () {
-                                            Get.find<TabsController>()
-                                                .getUrl(item['id']);
-                                          },
-                                          isMv: item['mv'] != 0,
-                                          onTapToPlayMmv: () {
-                                            Get.toNamed('/mv', arguments: {
-                                              'mvId': item['mv']
-                                            });
-                                          },
-                                        ),
+                                      CustomeSingleMusic(
+                                        title: '${item['name']}',
+                                        titleColor: Colors.blueAccent,
+                                        level: item['privilege']['maxbr'] ==
+                                            999000,
+                                        artist:
+                                            '${item['ar'].map((v) => v['name']).join('/')}',
+                                        isVip: item['fee'] == 1,
+                                        subTitle: '${item['al']['name']}',
+                                        originCoverType:
+                                            item['originCoverType'] == 1,
+                                        onTap: () {
+                                          Get.find<TabsController>()
+                                              .getUrl(item['id']);
+                                        },
+                                        isMv: item['mv'] != 0,
+                                        onTapToPlayMmv: () {
+                                          Get.toNamed('/mv',
+                                              arguments: {'mvId': item['mv']});
+                                        },
+                                        onTapMore: () {
+                                          MusicMenu.slideBottomMenu(item['id'],
+                                              picUrl: HttpsClient.getClipImg(
+                                                  item['al']['picUrl']),
+                                              name: '${item['name']}',
+                                              singer:
+                                                  '${item['ar'].map((v) => v['name']).join('/')}',
+                                              albumn: '${item['al']['name']}');
+                                        },
                                       ),
                                       const Divider()
                                     ],

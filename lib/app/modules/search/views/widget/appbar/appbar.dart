@@ -1,4 +1,5 @@
 import 'package:cloudmusic/app/modules/search/controllers/serach_controller.dart';
+import 'package:cloudmusic/app/services/format_timestamp/time_tool.dart';
 import 'package:cloudmusic/app/services/screenAdapter/screenAdapter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,6 +30,7 @@ class SearchAppBarView extends GetView<SerachController> {
             // 修改搜索框字体
             scrollPadding: const EdgeInsets.all(0),
             style: TextStyle(fontSize: ScreenAdapter.fs(40)),
+            autofocus: true,
             decoration: InputDecoration(
                 contentPadding: EdgeInsets.only(right: ScreenAdapter.width(40)),
                 hintText: Get.arguments['keyWord'],
@@ -46,6 +48,7 @@ class SearchAppBarView extends GetView<SerachController> {
             },
             onSubmitted: (value) async {
               if (value != "") {
+                Tool.closeKeyBoard(context);
                 await controller.setData('s_list', value);
                 await controller.getData('s_list');
                 Get.toNamed('/result', arguments: {'key': value});
@@ -61,6 +64,7 @@ class SearchAppBarView extends GetView<SerachController> {
           ),
           onPressed: () async {
             if (controller.keyWord.value != '') {
+              Tool.closeKeyBoard(context);
               await controller.setData('s_list', controller.keyWord.value);
               await controller.getData('s_list');
               Get.toNamed('/result',

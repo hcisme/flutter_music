@@ -9,57 +9,66 @@ class DiscoveryMvView extends GetView<DiscoveryController> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: ScreenAdapter.getScreenWidth(),
-        padding: EdgeInsets.symmetric(horizontal: ScreenAdapter.width(32)),
         child: Obx(() {
           return Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.only(bottom: ScreenAdapter.height(16)),
-                    child: Text(
-                      "发现mv",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: ScreenAdapter.fs(48)),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: ScreenAdapter.width(32),
+                    vertical: ScreenAdapter.height(16)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      margin: EdgeInsets.only(bottom: ScreenAdapter.height(16)),
+                      child: Text(
+                        "发现mv",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: ScreenAdapter.fs(48)),
+                      ),
                     ),
-                  ),
-                  Container(
-                    height: ScreenAdapter.height(80),
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.only(
-                        left: ScreenAdapter.width(40),
-                        right: ScreenAdapter.width(40)),
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: Colors.black12.withOpacity(0.1)),
-                        borderRadius:
-                            BorderRadius.circular(ScreenAdapter.width(40))),
-                    child: Text(
-                      "更多 >",
-                      style: TextStyle(
-                          color: Colors.black87,
-                          fontSize: ScreenAdapter.fs(38)),
+                    Container(
+                      height: ScreenAdapter.height(80),
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.only(
+                          left: ScreenAdapter.width(40),
+                          right: ScreenAdapter.width(40)),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.black12.withOpacity(0.1)),
+                          borderRadius:
+                              BorderRadius.circular(ScreenAdapter.width(40))),
+                      child: Text(
+                        "更多 >",
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: ScreenAdapter.fs(38)),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              ...controller.mvList.map((item) {
-                return CustomeMvCard(
-                    onTap: () {
-                      Get.toNamed('/mv', arguments: {'mvId': item['id']});
-                    },
-                    picurl: item['cover'],
-                    isMv: item['id'] != 0 || item['id'] != null,
-                    title: item['name'],
-                    duration: item['duration'],
-                    artist: item['artists'].map((row) => row['name']).join('/'),
-                    playCount: item['playCount']);
-              }).toList(),
+              Container(
+                child: Column(
+                  children: controller.mvList.map((item) {
+                    return CustomeMvCard(
+                        onTap: () {
+                          Get.toNamed('/mv', arguments: {'mvId': item['id']});
+                        },
+                        picurl: item['cover'],
+                        isMv: item['id'] != 0 || item['id'] != null,
+                        title: item['name'],
+                        duration: item['duration'],
+                        artist:
+                            item['artists'].map((row) => row['name']).join('/'),
+                        playCount: item['playCount']);
+                  }).toList(),
+                ),
+              ),
             ],
           );
         }));

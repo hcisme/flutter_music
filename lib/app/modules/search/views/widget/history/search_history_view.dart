@@ -1,4 +1,5 @@
 import 'package:cloudmusic/app/modules/search/controllers/serach_controller.dart';
+import 'package:cloudmusic/app/services/format_timestamp/time_tool.dart';
 import 'package:cloudmusic/app/services/screenAdapter/screenAdapter.dart';
 import 'package:cloudmusic/app/services/storage/storage.dart';
 import 'package:flutter/material.dart';
@@ -86,12 +87,14 @@ class SearchHistoryView extends GetView<SerachController> {
                   ? controller.historyList.map((item) {
                       return GestureDetector(
                         onLongPress: () {
+                          Tool.closeKeyBoard(context);
                           controller.isShowCloseBtn.value = true;
                           Future.delayed(const Duration(seconds: 10), () {
                             controller.isShowCloseBtn.value = false;
                           });
                         },
                         onTap: () async {
+                          controller.isShowCloseBtn.value = false;
                           await controller.setData('s_list', item);
                           await controller.getData('s_list');
                           Get.toNamed('/result', arguments: {'key': item});

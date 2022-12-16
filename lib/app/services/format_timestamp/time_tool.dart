@@ -1,4 +1,11 @@
+import 'package:flutter/material.dart';
+
 class Tool {
+  /// 关闭键盘
+  static closeKeyBoard(BuildContext context) {
+    FocusScope.of(context).requestFocus(FocusNode());
+  }
+
   /// 格式化播放次数
   static String formatPlayCount(num playCount) {
     if (playCount > 100000000) {
@@ -11,12 +18,6 @@ class Tool {
 
   //、 计算视频或者音乐播放时间
   static String formatDt(num duration) {
-    // let min = parseInt(duration / 1000 / 60);
-    // min = min < 10 ? '0' + min : min;
-    // let sec = parseInt((duration / 1000) % 60);
-    // sec = sec < 10 ? '0' + sec : sec;
-    // const forTime = `${min}:${sec}`;
-    // return forTime;
     final minute = duration / 1000 ~/ 60;
     var newMin = minute < 10 ? '0$minute' : minute;
 

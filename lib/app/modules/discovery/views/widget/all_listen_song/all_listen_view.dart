@@ -60,6 +60,8 @@ class AllListenView extends GetView<DiscoveryController> {
                               onTap: () {
                                 controller.getUrl(item["id"]);
                               },
+                              borderRadius:
+                                  BorderRadius.circular(ScreenAdapter.width(8)),
                               child: ListTile(
                                   leading: Container(
                                     width: ScreenAdapter.width(140),
