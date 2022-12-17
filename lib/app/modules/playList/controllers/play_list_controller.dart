@@ -71,15 +71,6 @@ class PlayListController extends GetxController {
   void onInit() {
     super.onInit();
 
-    EasyLoading.instance
-      ..loadingStyle = EasyLoadingStyle.light
-      ..indicatorSize = 45.0
-      ..radius = 10.0
-      ..dismissOnTap = false
-      ..maskType = EasyLoadingMaskType.none
-      ..userInteractions = false
-      ..indicatorType = EasyLoadingIndicatorType.wave;
-
     request();
     getPageMusicList();
   }

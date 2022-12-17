@@ -23,6 +23,7 @@ class ResultController extends GetxController
   RxInt total = 0.obs;
   RxBool flag = false.obs;
   RxBool isHaveData = true.obs;
+  RxInt commentCount = 0.obs;
 
   Future request() async {
     // 首次加载显示 loading
@@ -64,18 +65,16 @@ class ResultController extends GetxController
     return 0;
   }
 
+  Future getCommentCount(id) async {
+    var response =
+        await httpsClient.get('/comment/music', params: {'id': id, 'limit': 1});
+    commentCount.value = response.data['total'];
+  }
+
   @override
   void onInit() {
     super.onInit();
     textEditingController.text = Get.arguments['key'];
-
-    EasyLoading.instance
-      ..loadingStyle = EasyLoadingStyle.light
-      ..indicatorSize = 45.0
-      ..radius = 10.0
-      ..dismissOnTap = false
-      ..userInteractions = false
-      ..indicatorType = EasyLoadingIndicatorType.wave;
 
     tabController = TabController(
       length: 5,

@@ -1,5 +1,5 @@
 import 'package:cloudmusic/app/common/Singles/custome_single_music.dart';
-import 'package:cloudmusic/app/common/music_menu/nusic_nenu.dart';
+import 'package:cloudmusic/app/common/MusicMenu/nusic_nenu.dart';
 import 'package:cloudmusic/app/modules/result/controllers/result_controller.dart';
 import 'package:cloudmusic/app/modules/tabs/controllers/tabs_controller.dart';
 import 'package:cloudmusic/app/services/httpClient/httpsClient.dart';
@@ -75,14 +75,23 @@ class ResultMusicView extends GetView<ResultController> {
                                           Get.toNamed('/mv',
                                               arguments: {'mvId': item['mv']});
                                         },
-                                        onTapMore: () {
-                                          MusicMenu.slideBottomMenu(item['id'],
-                                              picUrl: HttpsClient.getClipImg(
-                                                  item['al']['picUrl']),
-                                              name: '${item['name']}',
-                                              singer:
-                                                  '${item['ar'].map((v) => v['name']).join('/')}',
-                                              albumn: '${item['al']['name']}');
+                                        onTapMore: () async {
+                                          await controller
+                                              .getCommentCount(item['id']);
+                                          MusicMenu.slideBottomMenu(
+                                            item['id'],
+                                            picUrl: HttpsClient.getClipImg(
+                                                item['al']['picUrl']),
+                                            name: '${item['name']}',
+                                            singer:
+                                                '${item['ar'].map((v) => v['name']).join('/')}',
+                                            albumn: '${item['al']['name']}',
+                                            commentCount:
+                                                '${controller.commentCount}',
+                                            alia: (item['alia'] as List).isEmpty
+                                                ? ''
+                                                : item['alia'][0],
+                                          );
                                         },
                                       ),
                                       const Divider()

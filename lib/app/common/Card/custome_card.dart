@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloudmusic/app/common/tip/tip.dart';
+import 'package:cloudmusic/app/common/Tip/tip.dart';
 import 'package:cloudmusic/app/services/httpClient/httpsClient.dart';
 import 'package:cloudmusic/app/services/screenAdapter/screenAdapter.dart';
 import 'package:flutter/material.dart';

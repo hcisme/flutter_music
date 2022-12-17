@@ -72,7 +72,6 @@ class MvController extends GetxController {
       EasyLoading.dismiss();
       return true;
     }
-    await EasyLoading.showToast('网络似乎出问题了');
     return false;
   }
 
@@ -80,15 +79,6 @@ class MvController extends GetxController {
   void onInit() async {
     super.onInit();
     id = Get.arguments['mvId'];
-
-    EasyLoading.instance
-      ..loadingStyle = EasyLoadingStyle.light
-      ..indicatorSize = 45.0
-      ..radius = 10.0
-      ..dismissOnTap = false
-      ..maskType = EasyLoadingMaskType.none
-      ..userInteractions = false
-      ..indicatorType = EasyLoadingIndicatorType.wave;
 
     await request().then((value) {
       initVideoPlayer();

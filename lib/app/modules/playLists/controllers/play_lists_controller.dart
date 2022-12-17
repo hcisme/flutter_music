@@ -39,17 +39,6 @@ class PlayListsController extends GetxController
   RxList playList = [].obs;
   bool flag = true;
 
-  initLoading() {
-    EasyLoading.instance
-      ..loadingStyle = EasyLoadingStyle.light
-      ..indicatorSize = 45.0
-      ..radius = 10.0
-      ..dismissOnTap = false
-      ..maskType = EasyLoadingMaskType.none
-      ..userInteractions = true
-      ..indicatorType = EasyLoadingIndicatorType.wave;
-  }
-
   resetPagination() {
     easyRefreshController.resetFooter();
     page = 0;
@@ -85,7 +74,6 @@ class PlayListsController extends GetxController
   @override
   void onInit() {
     super.onInit();
-    initLoading();
     tabController = TabController(length: tabs.length, vsync: this);
 
     request();

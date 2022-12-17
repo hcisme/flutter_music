@@ -8,6 +8,7 @@ abstract class Routes {
   static const RESULT = _Paths.RESULT;
   static const PLAY_LIST = _Paths.PLAY_LIST;
   static const MV = _Paths.MV;
+  static const COMMENT = _Paths.COMMENT;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const RESULT = '/result';
   static const PLAY_LIST = '/play-list';
   static const MV = '/mv';
+  static const COMMENT = '/comment';
 }

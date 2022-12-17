@@ -2,6 +2,8 @@ import 'package:flutter/animation.dart';
 
 import 'package:get/get.dart';
 
+import '../modules/comment/bindings/comment_binding.dart';
+import '../modules/comment/views/comment_view.dart';
 import '../modules/mv/bindings/mv_binding.dart';
 import '../modules/mv/views/mv_view.dart';
 import '../modules/playList/bindings/play_list_binding.dart';
@@ -46,6 +48,12 @@ class AppPages {
         name: _Paths.MV,
         page: () => const MvView(),
         binding: MvBinding(),
+        curve: Curves.fastLinearToSlowEaseIn,
+        transition: Transition.downToUp),
+    GetPage(
+        name: _Paths.COMMENT,
+        page: () => const CommentView(),
+        binding: CommentBinding(),
         curve: Curves.fastLinearToSlowEaseIn,
         transition: Transition.downToUp),
   ];

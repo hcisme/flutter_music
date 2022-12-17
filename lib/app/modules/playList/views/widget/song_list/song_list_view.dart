@@ -20,7 +20,7 @@ class SongListView extends GetView<PlayListController> {
                   mainAxisSize: MainAxisSize.min,
                   children: AnimationConfiguration.toStaggeredList(
                       childAnimationBuilder: (widget) => SlideAnimation(
-                            horizontalOffset: 50.0,
+                            verticalOffset: 100.0,
                             child: FadeInAnimation(
                               child: widget,
                             ),

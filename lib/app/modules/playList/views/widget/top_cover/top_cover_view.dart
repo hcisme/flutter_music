@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloudmusic/app/common/tip/tip.dart';
+import 'package:cloudmusic/app/common/Tip/tip.dart';
 import 'package:cloudmusic/app/modules/playList/controllers/play_list_controller.dart';
 import 'package:cloudmusic/app/services/format_timestamp/time_tool.dart';
 import 'package:cloudmusic/app/services/httpClient/httpsClient.dart';
