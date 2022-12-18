@@ -90,5 +90,6 @@ class PlayListsController extends GetxController
   void onClose() {
     super.onClose();
     EasyLoading.dismiss();
+    refreshController.dispose();
   }
 }

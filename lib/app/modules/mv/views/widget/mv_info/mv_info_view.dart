@@ -1,13 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloudmusic/app/modules/mv/controllers/mv_controller.dart';
+import 'package:cloudmusic/app/modules/mv/views/widget/comment/mvComment.dart';
 import 'package:cloudmusic/app/services/format_timestamp/time_tool.dart';
+import 'package:cloudmusic/app/services/iconfont/iconfont.dart';
 import 'package:cloudmusic/app/services/screenAdapter/screenAdapter.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
 class MvInfoView extends GetView<MvController> {
-  const MvInfoView({Key? key}) : super(key: key);
+  const MvInfoView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -103,23 +106,87 @@ class MvInfoView extends GetView<MvController> {
                             color: Colors.black38)),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: controller.iconList.map((item) {
-                          return Column(
-                            children: [
-                              Icon(
-                                item['icon'],
-                                color: Colors.black54,
-                                size: ScreenAdapter.fs(56),
-                              ),
-                              Text(
-                                item['title'],
-                                style: const TextStyle(
+                        children: [
+                          InkWell(
+                            onTap: () {},
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.add_to_photos_sharp,
                                   color: Colors.black54,
+                                  size: ScreenAdapter.fs(56),
                                 ),
-                              )
-                            ],
-                          );
-                        }).toList()),
+                                const Text(
+                                  '收藏',
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {},
+                            child: Column(
+                              children: [
+                                Icon(
+                                  IconFont.share,
+                                  color: Colors.black54,
+                                  size: ScreenAdapter.fs(56),
+                                ),
+                                const Text(
+                                  '13888',
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () async {
+                              controller.newComments.value = [];
+                              controller.hotComments.value = [];
+                              controller.page = 0;
+                              controller.isHaveData = true;
+                              await controller.getAllComments();
+                              await Get.bottomSheet(const MvComment());
+                            },
+                            child: Column(
+                              children: [
+                                Icon(
+                                  IconFont.comment,
+                                  color: Colors.black54,
+                                  size: ScreenAdapter.fs(56),
+                                ),
+                                const Text(
+                                  '评论',
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {},
+                            child: Column(
+                              children: [
+                                Icon(
+                                  IconFont.star,
+                                  color: Colors.black54,
+                                  size: ScreenAdapter.fs(56),
+                                ),
+                                const Text(
+                                  '1000',
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ]),
                   ],
                 );
         }));

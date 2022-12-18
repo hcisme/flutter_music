@@ -1,7 +1,9 @@
+import 'package:cloudmusic/app/modules/mv/views/widget/appbar/appbar.dart';
 import 'package:cloudmusic/app/modules/mv/views/widget/mv_info/mv_info_view.dart';
 import 'package:cloudmusic/app/modules/mv/views/widget/mv_player/mv_player_view.dart';
 import 'package:cloudmusic/app/modules/mv/views/widget/related_recom/related_recom_view.dart';
 import 'package:cloudmusic/app/services/screenAdapter/screenAdapter.dart';
+import 'package:cloudmusic/app/services/size/size.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -13,7 +15,10 @@ class MvView extends GetView<MvController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(Unified.appBarHeight),
+        child: const MvAppbar(),
+      ),
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

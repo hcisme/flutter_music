@@ -64,5 +64,6 @@ class CommentController extends GetxController {
   void onClose() {
     super.onClose();
     refreshController.dispose();
+    EasyLoading.dismiss();
   }
 }

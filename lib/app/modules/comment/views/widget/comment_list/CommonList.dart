@@ -1,6 +1,7 @@
 import 'package:cloudmusic/app/common/CommentItem/common_item.dart';
 import 'package:cloudmusic/app/modules/comment/controllers/comment_controller.dart';
 import 'package:cloudmusic/app/services/enum/data.dart';
+import 'package:cloudmusic/app/services/format_timestamp/time_tool.dart';
 import 'package:cloudmusic/app/services/httpClient/httpsClient.dart';
 import 'package:cloudmusic/app/services/screenAdapter/screenAdapter.dart';
 import 'package:easy_refresh/easy_refresh.dart';
@@ -60,7 +61,8 @@ class CommentList extends GetView<CommentController> {
                                       avatar: HttpsClient.getClipImg(
                                           item['user']['avatarUrl']),
                                       isVip: item['user']['vipType'] != 0,
-                                      likedCount: '${item['likedCount']}',
+                                      likedCount: Tool.formatPlayCount(
+                                          item['likedCount']),
                                       name: item['user']['nickname'],
                                       publishTime: item['timeStr'],
                                       content: item['content'],

@@ -6,11 +6,12 @@ class MvAppbar extends GetView<MvController> {
   const MvAppbar({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: const Text('MvView'),
-      elevation: 0,
-      backgroundColor: Colors.black.withOpacity(0.1),
-      centerTitle: true,
-    );
+    return Obx(() {
+      return AppBar(
+        title: Text(
+            controller.detailInfo.isEmpty ? '' : controller.detailInfo['name']),
+        elevation: 0,
+      );
+    });
   }
 }

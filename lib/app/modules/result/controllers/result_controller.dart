@@ -92,5 +92,6 @@ class ResultController extends GetxController
     tabController.dispose();
     // 取消loading
     EasyLoading.dismiss();
+    refreshController.dispose();
   }
 }
